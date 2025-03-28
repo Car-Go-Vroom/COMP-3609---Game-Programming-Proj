@@ -23,6 +23,8 @@
 hs_err_pid*
 replay_pid*
 
+# For vscode generated files
+.vscode
 
 #Isa's personal gitignore section
 patch notes.txt

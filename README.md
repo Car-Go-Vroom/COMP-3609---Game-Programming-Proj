@@ -1,0 +1,1 @@
+Run game with `mvn javafx:run` in the terminal.
