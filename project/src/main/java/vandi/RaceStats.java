@@ -1,5 +1,8 @@
 package vandi;
 
+import lombok.ToString;
+
+@ToString
 public class RaceStats {
     private int racesWon;
     private int racesLost;

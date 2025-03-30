@@ -14,4 +14,16 @@ public class Player {
         // Car selection logic
         return null;
     }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void deductMoney(int amount) {
+        this.money -= amount;
+    }
+
+    public void removeCar(PlayerCar car) {
+        garage.removeCar(car);
+    }
 }

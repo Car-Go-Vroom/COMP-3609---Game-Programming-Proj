@@ -5,10 +5,16 @@ import java.util.List;
 
 public class GamePanel {
     private List<CarObject> carObjects;
+    /*
+     * Location 0 in the list will be the playerCar
+     * Location 1 in the list will be the opponent
+     * Location 2 in the list will be the police Car
+     */
     private Player player;
     private Bot opponent;
     private Police police;
     private Level current;
+    private RaceStats rs;
 
     public GamePanel() {
         carObjects = new ArrayList<>();
@@ -29,10 +35,22 @@ public class GamePanel {
     }
 
     public void initiatePolicePursuit() {
-        // Police pursuit logic
+        double random = Math.random();
+        if (random < current.getPoliceProbability()) {
+            police.setActive(true);
+
+            PlayerCar playerCar = (PlayerCar) carObjects.get(0);
+            // I suspect this is only going to register that specific position so I may have
+            // to throw this in a thread to continuously get the position but later for
+            // that.
+            double targetX = playerCar.getPositionX();
+            double targetY = playerCar.getPositionY();
+
+            police.chase(targetX, targetY, player, playerCar);
+        }
     }
 
     public void displayResults() {
-        // Results display logic
+        rs.toString(); // I have no idea what this gonna output so good luck lombok.
     }
 }
