@@ -3,6 +3,21 @@ package vandi;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/* This is how to select cars
+PlayerCar car = new PlayerCar("Toyota", "Supra", 200, 5.0, 100);
+player.selectCarFromGarage(car);
+CarObject selectedCar = player.selectCar();
+
+ * This is how to get the store to sell cars
+  try {
+    store.sellCar(selectedCar, player);
+} catch (IllegalStateException e) {
+    System.out.println(e.getMessage()); // "Insufficient Funds"
+} catch (IllegalArgumentException e) {
+    System.out.println(e.getMessage()); // "Car not available in store"
+} */
+
 public class GamePanel {
     private List<CarObject> carObjects;
     /*

@@ -15,11 +15,11 @@ public class PlayerCar extends CarObject {
     private double acceleration;
     private double nitroAmount;
     private List<Part> parts;
-    private String carSprite; // Assuming Animation is represented as String
+    private String carSprite; // Assuming Animation is represented as String (THIS NEEDS TO CHANGE)
 
     public PlayerCar(String brand, String model, double topSpeed,
             double acceleration, double nitroAmount) {
-        super(); // Explicitly call the constructor of CarObject
+        super();
         this.brand = brand;
         this.model = model;
         this.topSpeed = topSpeed;

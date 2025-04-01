@@ -11,7 +11,9 @@ public class Player {
     }
 
     public CarObject selectCar() {
-        // Car selection logic
+        if (garage.getSelectedPlayerCar() != null) {
+            return garage.getSelectedPlayerCar();
+        }
         return null;
     }
 
@@ -25,5 +27,13 @@ public class Player {
 
     public void removeCar(PlayerCar car) {
         garage.removeCar(car);
+    }
+
+    public void selectCarFromGarage(PlayerCar car) {
+        garage.setSelectedPlayerCar(car);
+    }
+
+    public Garage getGarage() {
+        return garage;
     }
 }

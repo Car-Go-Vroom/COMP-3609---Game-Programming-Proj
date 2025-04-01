@@ -8,10 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 
-/**
- * The ImageManager class manages the loading and processing of images.
- */
-
 public class ImageManager {
 
 	public ImageManager() {
@@ -34,7 +30,6 @@ public class ImageManager {
 		return bi;
 	}
 
-	// make a copy of the BufferedImage src
 
 	public static BufferedImage copyImage(BufferedImage src) {
 		if (src == null)
@@ -48,7 +43,6 @@ public class ImageManager {
 
 		Graphics2D g2d = copy.createGraphics();
 
-		// copy image
 		g2d.drawImage(src, 0, 0, null);
 		g2d.dispose();
 
@@ -65,7 +59,6 @@ public class ImageManager {
 
 		Graphics2D g2d = dest.createGraphics();
 
-		// Perform horizontal flip
 
 		g2d.drawImage(src, imWidth, 0, 0, imHeight,
 				0, 0, imWidth, imHeight, null);
@@ -83,7 +76,6 @@ public class ImageManager {
 
 		Graphics2D g2d = dest.createGraphics();
 
-		// Perform vertical flip
 
 		g2d.drawImage(src, 0, imHeight, imWidth, 0,
 				0, 0, imWidth, imHeight, null);
