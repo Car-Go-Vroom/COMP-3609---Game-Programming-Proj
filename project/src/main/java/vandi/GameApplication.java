@@ -9,11 +9,8 @@ import javafx.stage.Stage;
 public class GameApplication extends Application {
     @Override
     public void start(Stage stage) {
-        Label label = new Label("Game is running!");
-        Scene scene = new Scene(new StackPane(label), 300, 200);
-        stage.setScene(scene);
-        stage.setTitle("Game Window");
-        stage.show();
+        MainMenu mainMenu = new MainMenu(stage);
+        mainMenu.show();
     }
 
     public static void main(String[] args) {

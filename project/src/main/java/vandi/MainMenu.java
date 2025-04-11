@@ -36,7 +36,7 @@ public class MainMenu {
 
     private void loadResources() {
         try {
-            BufferedImage bufferedImage = ImageManager.loadBufferedImage("/images/background.jpg");
+            BufferedImage bufferedImage = ImageManager.loadBufferedImage("src/main/resources/images/Running & Racing.jpg");
             Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
             bgImage = fxImage;
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class MainMenu {
         if (bgImage != null) {
             gc.drawImage(bgImage, 0, 0, screenWidth, screenHeight);
         } else {
-            gc.setFill(javafx.scene.paint.Color.LIGHTGRAY);
+            gc.setFill(javafx.scene.paint.Color.RED);
             gc.fillRect(0, 0, screenWidth, screenHeight);
             System.out.println("Background image not loaded.");
         }
@@ -72,22 +72,29 @@ public class MainMenu {
         // Adding buttons to the VBox
         buttonBox.getChildren().addAll(startButton, garageButton, storeButton);
         buttonBox.setTranslateY(80); // Adjust the Y position of the button box
+        root.getChildren().add(buttonBox);
 
         menuScene = new Scene(root, screenWidth, screenHeight);
     }
 
     private Button createStyledButton(String text) {
         Button button = new Button(text);
-        button.setPrefHeight(200);
-        button.setPrefWidth(50);
+        button.setPrefHeight(50);
+        button.setPrefWidth(200);
 
-        button.setStyle(text);//* Add your CSS styles here */
+        button.setStyle(
+            "-fx-background-color: #444444;" +
+            "-fx-text-fill: white;" +
+            "-fx-border-color: white;" +
+            "-fx-border-width: 2px;" +
+            "-fx-cursor: hand;"
+        );//* Add your CSS styles here */
 
         // TODO: Hover effect for the button
-        button.setOnMouseEntered(e -> button.setStyle(text)); // Change style on hover
+        // button.setOnMouseEntered(e -> button.setStyle(text)); // Change style on hover
 
         // TODO: Add mouse exit effect to reset the button style
-        button.setOnMouseExited(e -> button.setStyle(text)); // Reset style on exit
+        // button.setOnMouseExited(e -> button.setStyle(text)); // Reset style on exit
         
         return button;
     }
