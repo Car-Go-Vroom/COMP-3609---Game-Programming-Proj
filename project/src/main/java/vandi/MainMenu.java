@@ -36,7 +36,7 @@ public class MainMenu {
 
     private void loadResources() {
         try {
-            BufferedImage bufferedImage = ImageManager.loadBufferedImage("src/main/resources/images/Running & Racing.jpg");
+            BufferedImage bufferedImage = ImageManager.loadBufferedImage("src/main/resources/images/Running and Racing.png");
             Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
             bgImage = fxImage;
         } catch (Exception e) {
