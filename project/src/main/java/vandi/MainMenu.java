@@ -10,13 +10,17 @@ import javafx.geometry.Pos;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class MainMenu {
     private Stage stage;
     private Scene menuScene;
+    private Shop shopScene = null; // Initialize shopScene to null
 
     // private final double DEFAULT_WIDTH = 800; //Here incase it is needed to be used
     // private final double DEFAULT_HEIGHT = 600; //Here incase it is needed to be used
@@ -81,14 +85,28 @@ public class MainMenu {
         Button button = new Button(text);
         button.setPrefHeight(50);
         button.setPrefWidth(200);
+        Font pixelFont = null;
+
+        // Font loader for the pixelized font for main menu text
+        try {
+            pixelFont = Font.loadFont(new FileInputStream(new File("src/main/resources/fonts/PressStart2P-Regular.ttf")), 30); // https://fonts.google.com/specimen/Press+Start+2P
+        } catch (java.io.FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Font file not found. Using default font.");
+        }
 
         button.setStyle(
-            "-fx-background-color: #444444;" +
-            "-fx-text-fill: white;" +
-            "-fx-border-color: white;" +
-            "-fx-border-width: 2px;" +
-            "-fx-cursor: hand;"
-        );//* Add your CSS styles here */
+            "-fx-font-family: '"+ pixelFont.getFamily() +"', monospace;" +
+            "-fx-text-fill: white;"+
+            "-fx-background-color: transparent;" +
+            "-fx-border-width: 0;" +
+            "-fx-font-size: 24px;" +
+            "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 3, 3);" +
+            "-fx-padding: 10 20;" +
+            "-fx-cursor: hand;" +
+            "-fx-text-transform: uppercase;"+
+            "-fx-letter-spacing: 2px" 
+        );
 
         // TODO: Hover effect for the button
         // button.setOnMouseEntered(e -> button.setStyle(text)); // Change style on hover
@@ -117,8 +135,10 @@ public class MainMenu {
     }
     private void handleStoreButtonClick() {
         System.out.println("Store button clicked.");
-        // TODO: Implement store functionality here
+        if(shopScene == null){
+            shopScene = new Shop(stage, this, player); // Assuming you have a Shop class that creates the shop scene
+        }
+        shopScene.show(); // Show the shop scene
     }
     
-
 }
