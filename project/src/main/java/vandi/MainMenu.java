@@ -17,13 +17,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 
+import vandi.RaceScene;
+import vandi.GarageScene;
+
 public class MainMenu {
     private Stage stage;
     private Scene menuScene;
-    private Shop shopScene = null; // Initialize shopScene to null
+    // private Shop shopScene = null; // Initialize shopScene to null
+    private Player player;
 
-    // private final double DEFAULT_WIDTH = 800; //Here incase it is needed to be used
-    // private final double DEFAULT_HEIGHT = 600; //Here incase it is needed to be used
     private double screenWidth;
     private double screenHeight;
 
@@ -34,6 +36,7 @@ public class MainMenu {
         javafx.geometry.Rectangle2D screenBounds = javafx.stage.Screen.getPrimary().getVisualBounds();
         this.screenWidth = screenBounds.getWidth();
         this.screenHeight = screenBounds.getHeight();
+        player = new Player();
         loadResources();
         createMenuScene();
     }
@@ -113,7 +116,7 @@ public class MainMenu {
 
         // TODO: Add mouse exit effect to reset the button style
         // button.setOnMouseExited(e -> button.setStyle(text)); // Reset style on exit
-        
+
         return button;
     }
 
@@ -126,19 +129,23 @@ public class MainMenu {
 
     private void handleStartButtonClick() {
         System.out.println("Start button clicked.");
-        // TODO: Implement start functionality here
-        // For example, you can switch to the game scene or another menu
+        // Switch to race scene with player instance
+        RaceScene raceScene = new RaceScene(screenWidth, screenHeight, player);
+        Scene scene = new Scene(raceScene, screenWidth, screenHeight);
+        stage.setScene(scene);
     }
     private void handleGarageButtonClick() {
         System.out.println("Garage button clicked.");
         // TODO: Implement garage functionality here
+        GarageScene garageScene = new GarageScene(stage, this);
+        garageScene.show(); // Show the garage scene
     }
     private void handleStoreButtonClick() {
-        System.out.println("Store button clicked.");
-        if(shopScene == null){
-            shopScene = new Shop(stage, this, player); // Assuming you have a Shop class that creates the shop scene
-        }
-        shopScene.show(); // Show the shop scene
+        // System.out.println("Store button clicked.");
+        // if(shopScene == null){
+        //     shopScene = new Shop(stage); // Assuming you have a Shop class that creates the shop scene
+        // }
+        // shopScene.show(); // Show the shop scene
     }
     
 }
