@@ -129,10 +129,14 @@ public class MainMenu {
 
     private void handleStartButtonClick() {
         System.out.println("Start button clicked.");
-        // Switch to race scene with player instance
+        if (player.selectCar() == null) {
+            PlayerCar defaultCar = new PlayerCar("Nissan", "370Z", 180, 4.5, 100);
+            defaultCar.setWeight(1400);
+            player.getGarage().addCar(defaultCar);
+            player.selectCarFromGarage(defaultCar);
+        }
         RaceScene raceScene = new RaceScene(screenWidth, screenHeight, player);
-        Scene scene = new Scene(raceScene, screenWidth, screenHeight);
-        stage.setScene(scene);
+        raceScene.show(stage);
     }
     private void handleGarageButtonClick() {
         System.out.println("Garage button clicked.");

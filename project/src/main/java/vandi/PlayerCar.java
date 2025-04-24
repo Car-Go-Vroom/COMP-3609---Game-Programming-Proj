@@ -16,6 +16,7 @@ public class PlayerCar extends CarObject {
     private double nitroAmount;
     private List<Part> parts;
     private String carSprite; // Assuming Animation is represented as String (THIS NEEDS TO CHANGE)
+    private int currentGear;
 
     public PlayerCar(String brand, String model, double topSpeed,
             double acceleration, double nitroAmount) {
@@ -26,9 +27,29 @@ public class PlayerCar extends CarObject {
         this.acceleration = acceleration;
         this.nitroAmount = nitroAmount;
         this.parts = new ArrayList<>();
+        this.currentGear = 1; // default gear
     }
 
     public double getTopSpeed() {
         return topSpeed;
+    }
+
+    public void shiftUp() {
+        if (currentGear < 6) { // assuming 6 gears max
+            currentGear++;
+        }
+    }
+
+    public void shiftDown() {
+        if (currentGear > 1) {
+            currentGear--;
+        }
+    }
+
+    public void consumeNitro(double amount) {
+        nitroAmount -= amount;
+        if (nitroAmount < 0) {
+            nitroAmount = 0;
+        }
     }
 }
